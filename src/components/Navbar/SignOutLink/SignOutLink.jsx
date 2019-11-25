@@ -18,7 +18,7 @@ class SignOutLink extends Component {
     return (
       <ul className="navbar-nav ml-auto">
       <li className="nav-item">
-        <Link to="/dashboard">
+        <Link to="/user">
           <Styled.navlink className="nav-link" >Hi {this.props.profile.firstName} !</Styled.navlink>
         </Link>
       </li>

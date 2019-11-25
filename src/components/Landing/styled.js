@@ -186,7 +186,7 @@ const footer = styled.div `
         padding:10px;
     }
     .footer-image{
-        width:100%;
+        width:100%; 
     }
 `;
 

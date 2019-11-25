@@ -2,21 +2,27 @@ import React, { Component } from 'react';
 import Styled from "./styled";
 import Authentication from "../Authentication";
 import {connect} from "react-redux";
+import { withRouter } from "react-router-dom";
+
 
 class Landing extends Component {
+  constructor(props){
+    super(props)
+  }
   state = {
     hasError: false,
     signInModalShow: false,
   }
-
-  componentDidMount = () => {
-    console.log('Landing mounted');
+  authToggle = () =>{
+    const { auth } = this.props;
+    if (!auth.uid) {
+      this.props.authModalToggle()
+    }
+    else{
+      this.props.history.push("/user")
+    }
   }
 
-  static getDerivedStateFromError(error) {
-    // getDerivedStateFromError -> Update state so the next render will show the fallback UI.
-    return { hasError: true };
-  }
   signInToggle() {
     this.setState({
       signInModalShow: !this.state.signInModalShow,
@@ -33,7 +39,7 @@ class Landing extends Component {
           <Styled.centerblock className="center-block">
             <h2 className="display-3">You can have your cake and lose weight, too!</h2>
             <h3 className="display-3">Get your customize dieteary plan, inspired from you BMI </h3>
-            <button type="button" onClick={this.props.authModalToggle} className="btn btn-primary btn-lg promo-head-btn">Start Now</button>
+            <button type="button" onClick={this.authToggle} className="btn btn-primary btn-lg promo-head-btn">Start Now</button>
           </Styled.centerblock>
         </Styled.headbanner>
         <Styled.servicecontainer className="container">
@@ -103,15 +109,17 @@ class Landing extends Component {
 }
 const mapStateToProps = state =>{
   return{
-    authModalShow: state.authModalShow
+    authModalShow: state.authModalShow,
+    auth:state.firebase.auth
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
     authModalToggle:() => dispatch({type:"AUTH_MODAL_TOGGLE"})
+    
   };
 }
 
 
-export default connect(mapStateToProps,mapDispatchToProps)(Landing);
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Landing));
