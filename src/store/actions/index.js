@@ -1,5 +1,6 @@
 export {
-    authModalToggle
+    authModalToggle,
+    hideSuccessAlert
 } from "./userInterface"
 
 export {
@@ -7,3 +8,10 @@ export {
     signOut,
     signUp
 } from "./authAction"
+
+export {
+    recordCalorie,
+    getIntakeCalorie,
+    getCurrentDayCalorieIntake,
+    getCurrentWeekCalorieIntake
+} from "./calorieTracker"

@@ -7,6 +7,7 @@ import Dashboard from "../Dashboard"
 import SignInLink from "./SignInLink"
 import {connect} from "react-redux";
 import * as actionCreators from "../../store/actions/index"
+import User from '../User';
 
 class NavBar extends Component {
   constructor(props) {
@@ -58,11 +59,10 @@ class NavBar extends Component {
           <div>
             <Switch>
               <Route path="/" exact component={LandingPage} />
-              <Route path="/dashboard"  component={Dashboard}/>
+              <Route path="/user" exact component={User}/>
             </Switch>
           </div>
         </Router>
-       
       </Styled.customNav>
     )
   }

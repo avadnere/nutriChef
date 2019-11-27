@@ -9,6 +9,7 @@ import {Provider} from "react-redux";
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from "redux-thunk";
 import firebase from 'firebase/app'
+import firestore from 'redux-firestore'
 import {createFirestoreInstance, getFirestore, reduxFirestore} from "redux-firestore";
 import {ReactReduxFirebaseProvider, getFirebase} from "react-redux-firebase";
 import fbConfig from "./Firebase/fbConfig"
@@ -30,6 +31,7 @@ const rrfPropsConfig = {
 }
 const rrfProps = {
     firebase,
+    firestore,
     config: rrfPropsConfig,
     dispatch: store.dispatch,
 }

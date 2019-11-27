@@ -5,3 +5,8 @@ export const authModalToggle = () => {
         type:actionTypes.AUTH_MODAL_TOGGLE
     }
 }
+export const hideSuccessAlert = () => {
+    return {
+        type:actionTypes.HIDE_SUCCESS_ALERT
+    }
+}
