@@ -8,6 +8,7 @@ import { Nav } from 'react-bootstrap';
 import DietaryPlan from '../DietaryPlan';
 import CalorieTracker from '../CalorieTracker';
 import { connect } from "react-redux";
+import { getIntakeCalorie, getCurrentDayCalorieIntake, getCurrentWeekCalorieIntake} from "../../store/actions"
 
 class User extends Component {
   state = {
@@ -19,6 +20,12 @@ class User extends Component {
     userProfile:false,
     dietaryPlan:false,
     calorieTracker:false
+  }
+  componentDidMount(){
+    this.props.getIntakeCalorie();
+    this.props.getCurrentWeekCalorieIntake();
+    this.props.getCurrentDayCalorieIntake();
+
   }
   handleSelect = eventKey => {
     this.setState(this.clearState)
@@ -79,4 +86,11 @@ const mapStateToProps = state => {
     auth: state.firebase.auth
   };
 }
-export default connect(mapStateToProps)(User);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    getIntakeCalorie:() => dispatch(getIntakeCalorie()),
+    getCurrentDayCalorieIntake:()=>dispatch(getCurrentDayCalorieIntake()),
+    getCurrentWeekCalorieIntake:()=>dispatch(getCurrentWeekCalorieIntake())
+  };
+}
+export default connect(mapStateToProps, mapDispatchToProps)(User);

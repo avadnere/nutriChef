@@ -5,7 +5,8 @@ const Container = styled.div`
     text-align:left;
     font-family: 'Comfortaa', cursive;
     h2{
-        font-size:300%;
+        font-size:28px;
+        font-weight:600;
     }
     .circular-bar{
         max-height:50vh;
