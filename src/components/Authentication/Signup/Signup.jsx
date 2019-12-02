@@ -54,6 +54,24 @@ class Signup extends Component {
               </Form.Group>
             </div>
           </div>
+          <div className="row">
+            <div className="col-sm-4 col-lg-4 col-md-4">
+              <Form.Group >
+                <Form.Control id="age" type="number" placeholder="Age" min={10} max={100}  onChange={this.handleChange}/>
+              </Form.Group>
+            </div>
+            <div className="col-sm-4 col-lg-4 col-md-4">
+              <Form.Group >
+                <Form.Control id="weight" type="number" placeholder="Weight (Kg)"  min={15} max={350}  onChange={this.handleChange}/>
+              </Form.Group>
+            </div>
+            <div className="col-sm-4 col-lg-4 col-md-4">
+              <Form.Group >
+                <Form.Control id="height" type="number" placeholder="Height (cm)" min={50} max={250} onChange={this.handleChange}/>
+              </Form.Group>
+            </div>
+          </div>
+
 
           <Styled.FormText>
             {/* {this.state.passwordMatch?null:"Password does not match !"} */}

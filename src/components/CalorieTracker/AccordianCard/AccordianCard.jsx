@@ -1,7 +1,9 @@
-import { Form, Card, Accordion, Button, Table } from "react-bootstrap"
+import { Card, Accordion, Button, Table } from "react-bootstrap"
 import React, { Component } from 'react';
 import Styled from "./styled";
-import moment from "moment"
+import { connect } from "react-redux";
+import { deleteCalorie } from "../../../store/actions"
+
 
 class AccordianCard extends Component {
   state = {
@@ -12,9 +14,8 @@ class AccordianCard extends Component {
     if (this.state.hasError) {
       return <h1>Something went wrong.</h1>;
     }
-    console.log(new Date(this.props.mealDetail.meal_intake_date).toDateString());
-    const meals = this.props.mealDetail.meals.map((meal)=>{
-     return ( <tr>
+    const meals = this.props.mealDetail.meals.map((meal, index)=>{
+     return ( <tr key={index}>
       <td> {meal.cuisine_name}</td>
       <td>{ meal.meal_type}</td>
       <td>{meal.calorie_intake}</td>
@@ -45,8 +46,8 @@ class AccordianCard extends Component {
                 </tbody>
               </Table>
               <footer className="pull-right">
-                <Button className="primary" variant="secondary">Edit</Button>
-                <Button className="secondary" variant="danger">Delete</Button>
+                {/* <Button className="primary" variant="secondary">Edit</Button> */}
+                <Button className="secondary" variant="danger" onClick={()=>this.props.deleteCalorie(this.props.mealId)}>Delete</Button>
               </footer>
             </Card.Body>
 
@@ -57,5 +58,11 @@ class AccordianCard extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+   
+    deleteCalorie:(mealId) => dispatch(deleteCalorie(mealId))
+  };
+}
+export default connect(null , mapDispatchToProps)(AccordianCard)
 
-export default AccordianCard;

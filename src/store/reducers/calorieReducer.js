@@ -15,15 +15,15 @@ const intialState = {
 const calorieReducer = (state = intialState, action) => {
     switch (action.type) {
         
-        case actionTypes.RECORD_CALORIE:
+        case actionTypes.UPDATE_CALORIE:
             console.log("Recorded Calorie", action.payload)
             
             return updatedObject(state, {
                 calorieIntake: action.payload,
             })
 
-        case actionTypes.RECORD_CALORIE_ERROR:
-            console.log("RECORD CALORIE ERROR".action.payload)
+        case actionTypes.UPDATE_CALORIE_ERROR:
+            console.log("UPDATE CALORIE ERROR".action.payload)
             return updatedObject(state, {
                 recordCalorieError: action.payload,
             })

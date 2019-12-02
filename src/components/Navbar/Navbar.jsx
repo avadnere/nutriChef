@@ -3,11 +3,11 @@ import Styled from "./styled";
 import { BrowserRouter as Router, Link, Switch, Route } from 'react-router-dom';
 import LandingPage from '../Landing';
 import SignOutLink from "./SignOutLink"
-import Dashboard from "../Dashboard"
 import SignInLink from "./SignInLink"
 import {connect} from "react-redux";
 import * as actionCreators from "../../store/actions/index"
 import User from '../User';
+import SecureBox from '../SecureBox';
 
 class NavBar extends Component {
   constructor(props) {
@@ -59,7 +59,7 @@ class NavBar extends Component {
           <div>
             <Switch>
               <Route path="/" exact component={LandingPage} />
-              <Route path="/user" exact component={User}/>
+              <Route path="/user" exact component={SecureBox}/>
             </Switch>
           </div>
         </Router>
@@ -69,7 +69,6 @@ class NavBar extends Component {
 }
 
 const mapStateToProps = state =>{
-  console.log(state)
   return{
     auth: state.firebase.auth
   };

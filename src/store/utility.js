@@ -14,7 +14,7 @@ export const currentWeekArray = () => {
     var days = [];
     var day = startOfWeek;
 
-    while (day <= endOfWeek) {     
+    while (day <= endOfWeek) {
         days.push(day.format("YYYY-MM-DD"));
         day = day.clone().add(1, 'd');
     }
@@ -23,7 +23,10 @@ export const currentWeekArray = () => {
 
 export const getUNIXTimestamp = (date_in_string) => {
     let date = new Date(date_in_string);
-    date = date.setDate(date.getDate()+1);
-     return date;
+    date = date.setDate(date.getDate() + 1);
+    return date;
 }
 
+export const filterRange = (arr, propName, a, b) => {
+    return arr.filter(item => (a <= (item.data())[propName] && (item.data())[propName] <= b));
+}

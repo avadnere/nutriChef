@@ -40,13 +40,14 @@ class Authentication extends Component {
           </Styled.ModalBody>
           <Modal.Footer>
             <Styled.Footer>
-                <p>Connect with using: </p>
+            Copyright 2019 Nutri-Chef. All Rights Reserved.
+                {/* <p>Connect with using: </p>
                 <FacebookLoginButton align="center" iconSize="15px" size="35px" >
                   <span className="social-media-btn">Continue with Facebook</span>
                 </FacebookLoginButton >
                 <GoogleLoginButton align="center" iconSize="15px" size="40px">
                   <span className="social-media-btn">Continue with Google</span>
-                </GoogleLoginButton>
+                </GoogleLoginButton> */}
             </Styled.Footer>
           </Modal.Footer>
         </Modal>

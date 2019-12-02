@@ -1,5 +1,3 @@
-'use strict';
-
 import React, { Component } from 'react';
 import Styled from "../styled";
 import { connect } from "react-redux";

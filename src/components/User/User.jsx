@@ -1,14 +1,17 @@
-'use strict';
-
 import React, { Component } from 'react';
 import Styled from "./styled";
 import Dashboard from '../Dashboard';
+import UserProfile from '../UserProfile';
 import { Redirect } from "react-router-dom"
 import { Nav } from 'react-bootstrap';
 import DietaryPlan from '../DietaryPlan';
 import CalorieTracker from '../CalorieTracker';
 import { connect } from "react-redux";
-import { getIntakeCalorie, getCurrentDayCalorieIntake, getCurrentWeekCalorieIntake} from "../../store/actions"
+import { getIntakeCalorie, 
+        getCurrentDayCalorieIntake, 
+        getCurrentWeekCalorieIntake, 
+        getNutritionAndCalorieFacts
+      } from "../../store/actions"
 
 class User extends Component {
   state = {
@@ -21,11 +24,13 @@ class User extends Component {
     dietaryPlan:false,
     calorieTracker:false
   }
+  componentWillMount(){
+    this.props.getNutritionAndCalorieFacts();
+  }
   componentDidMount(){
     this.props.getIntakeCalorie();
     this.props.getCurrentWeekCalorieIntake();
     this.props.getCurrentDayCalorieIntake();
-
   }
   handleSelect = eventKey => {
     this.setState(this.clearState)
@@ -41,10 +46,10 @@ class User extends Component {
     }
     const { auth } = this.props;
     if (!auth.uid) return <Redirect to="/" />
-    console.log(this.props.auth)
     const dashboard = this.state.dashboard ? <Dashboard /> : null;
     const dietaryPlan = this.state.dietaryPlan ? <DietaryPlan /> : null;
     const calorieTracker = this.state.calorieTracker ? <CalorieTracker /> : null;
+    const userProfile = this.state.userProfile ? <UserProfile/> : null;
     return (
       <>
       <Styled.SubNav>
@@ -59,13 +64,14 @@ class User extends Component {
             <Nav.Link eventKey="calorieTracker">Calorie Tracker</Nav.Link>
           </Nav.Item>
           <Nav.Item>
-            <Nav.Link eventKey="profile">Profile</Nav.Link>
+            <Nav.Link eventKey="userProfile">Profile</Nav.Link>
           </Nav.Item>
         </Nav>
         </Styled.SubNav>
         {dashboard}
         {dietaryPlan}
         {calorieTracker}
+        {userProfile}
         <hr/>
         <Styled.footer className="container">
           <div className="footer-desc">
@@ -74,14 +80,9 @@ class User extends Component {
           </div>
         </Styled.footer>
       </>
-    )
-
-  }
-
-
+    )}
 }
 const mapStateToProps = state => {
-  console.log(state)
   return {
     auth: state.firebase.auth
   };
@@ -90,7 +91,8 @@ const mapDispatchToProps = (dispatch) => {
   return {
     getIntakeCalorie:() => dispatch(getIntakeCalorie()),
     getCurrentDayCalorieIntake:()=>dispatch(getCurrentDayCalorieIntake()),
-    getCurrentWeekCalorieIntake:()=>dispatch(getCurrentWeekCalorieIntake())
+    getCurrentWeekCalorieIntake:()=>dispatch(getCurrentWeekCalorieIntake()),
+    getNutritionAndCalorieFacts:()=>dispatch(getNutritionAndCalorieFacts())
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(User);

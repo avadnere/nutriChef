@@ -6,9 +6,6 @@ import { withRouter } from "react-router-dom";
 
 
 class Landing extends Component {
-  constructor(props){
-    super(props)
-  }
   state = {
     hasError: false,
     signInModalShow: false,

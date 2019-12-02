@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Styled from "./styled";
-import { Form, Alert, Accordion, Button, Table } from "react-bootstrap"
+import { Form, Alert, Accordion, Button } from "react-bootstrap"
 import AccordianCard from "./AccordianCard"
 import { CircularProgressbarWithChildren, buildStyles } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
@@ -15,7 +15,7 @@ class CalorieTracker extends Component {
     visible: false,
     cards: [],
     cuisine_name: "",
-    meal_type: "",
+    meal_type: "Breakfast",
     calorie_intake: "",
     meal_intake_date: "",
     erro: "",
@@ -24,7 +24,7 @@ class CalorieTracker extends Component {
   onShowAlert = () => {
     this.setState({
       cuisine_name: "",
-      meal_type: "",
+      meal_type: "Breakfast",
       calorie_intake: "",
       meal_intake_date: "",
     })
@@ -86,6 +86,7 @@ class CalorieTracker extends Component {
         meal_intake_date: this.state.meal_intake_date
       }
       this.props.recordCalorie(calorieDetails)
+      
     }
   }
 
@@ -144,7 +145,7 @@ class CalorieTracker extends Component {
             </Form>
             <hr />
             <div className="progress-tracker">
-              <CircularProgressbarWithChildren className="circular-bar" value={this.props.current_day_calorie_intake} text={`${this.props.current_day_calorie_intake}%`} styles={buildStyles({
+              <CircularProgressbarWithChildren className="circular-bar" value={((this.props.current_day_calorie_intake/this.props.dailyCalorieIntake)*100).toFixed(1)} text={`${((this.props.current_day_calorie_intake/this.props.dailyCalorieIntake)*100).toFixed(1)}%`} styles={buildStyles({
                 pathColor: `#874F34`,
                 textColor: '#874F34',
                 backgroundColor: '#874F34'
@@ -155,7 +156,7 @@ class CalorieTracker extends Component {
               </CircularProgressbarWithChildren>
             </div>
             <div className="progress-tracker">
-              <CircularProgressbarWithChildren className="circular-bar" value={this.props.current_week_calorie_intake} text={`${this.props.current_week_calorie_intake}%`} styles={buildStyles({
+              <CircularProgressbarWithChildren className="circular-bar" value={((this.props.current_week_calorie_intake/this.props.weekelyCalorieIntake)*100).toFixed(1)} text={`${((this.props.current_week_calorie_intake/this.props.weekelyCalorieIntake)*100).toFixed(1)}%`} styles={buildStyles({
                 pathColor: `#874F34`,
                 textColor: '#874F34',
                 backgroundColor: '#874F34'
@@ -176,7 +177,9 @@ const mapStateToProps = state => {
     success_alert: state.ui.success_alert,
     calorie_intake: state.calorie.calorieIntake,
     current_day_calorie_intake:state.calorie.current_day_calorie_intake,
-    current_week_calorie_intake:state.calorie.current_week_calorie_intake_percentage
+    current_week_calorie_intake:state.calorie.current_week_calorie_intake_percentage,
+    dailyCalorieIntake: state.dietaryPlan.daily_calorie_intake,
+    weekelyCalorieIntake:state.dietaryPlan.weekelyCalorieIntake
   };
 }
 const mapDispatchToProps = (dispatch) => {

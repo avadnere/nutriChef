@@ -1,4 +1,4 @@
-'use strict';
+
 
 import React, { Component } from 'react';
 import Styled from "../styled";
@@ -11,10 +11,6 @@ import * as actionCreators from "../../../store/actions/index"
 class SignInLink extends Component {
   state = {
     hasError: false,
-  }
-
-  componentDidMount = () => {
-    console.log('SignInLink mounted');
   }
   signInToggle() {
     this.setState({

@@ -6,12 +6,24 @@ export {
 export {
     signIn,
     signOut,
-    signUp
+    signUp,
+    updatePassword,
+    resetUpdatePasswordFlag
 } from "./authAction"
 
 export {
     recordCalorie,
     getIntakeCalorie,
     getCurrentDayCalorieIntake,
-    getCurrentWeekCalorieIntake
+    getCurrentWeekCalorieIntake,
+    deleteCalorie
 } from "./calorieTracker"
+
+export {
+    updateUserDetail,
+    resetUserDetailUpdateFlag
+} from "./userAction"
+
+export {
+    getNutritionAndCalorieFacts
+} from "./dietaryPlanActions"

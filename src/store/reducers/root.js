@@ -4,6 +4,8 @@ import { firebaseReducer } from 'react-redux-firebase'
 import { firestoreReducer } from 'redux-firestore'
 import authReducer from "./authReducer";
 import calorieReducer from "./calorieReducer";
+import dietaryPlan from "./dietaryPlanReducer";
+import user from "./userReducer"
 
 export const rootReducer = combineReducers({
     ui: uiReducer,
@@ -11,4 +13,7 @@ export const rootReducer = combineReducers({
     firestore:firestoreReducer,
     auth:authReducer,
     calorie:calorieReducer,
+    dietaryPlan:dietaryPlan,
+    user:user
+    
 });

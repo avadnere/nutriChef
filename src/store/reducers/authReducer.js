@@ -5,7 +5,9 @@ import {
 } from "../utility"
 
 const intialState = {
-    authError: null
+    authError: null,
+    password_update_status:null,
+    update_password_err:null
 };
 
 const authReducer = (state = intialState, action) => {
@@ -25,10 +27,23 @@ const authReducer = (state = intialState, action) => {
             return updatedObject(state)
 
         case actionTypes.SIGNUP_ERROR:
-            console.log("Signup Error "+action.error.message)
             return updatedObject(state,{
                 authError:action.error.message
             })
+        case actionTypes.UPDATE_PASSWORD:
+            return updatedObject(state,{
+                password_update_status:true
+            })
+        case actionTypes.UPDATE_PASSWORD_ERROR:
+                return updatedObject(state,{
+                    password_update_status:false,
+                    update_password_err:action.payload
+                })
+        case actionTypes.RESET_UPDATE_PASSWORD_FLAG:
+                return updatedObject(state,{
+                    password_update_status:null,
+                    update_password_err:null
+                })
 
         default:
             return state;

@@ -51,7 +51,24 @@ const Container = styled.div`
         border-color:transparent;
         font-family: 'Comfortaa', cursive;
     }
-
+    .toggle-btn {
+        background-color:transparent ;
+        border-color:transparent ;
+        text-align:left;
+        padding-left:10px;
+    }
+    .toggle-btn:active {
+        background-color:transparent ;
+        border-color:transparent ;
+        text-align:left;
+    }
+    .btn-icon{
+        height:35px;
+        width:35px;
+    }
+    .left-alignment{
+        text-align:left;
+    }
 `;
 
 export default { Container };

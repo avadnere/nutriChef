@@ -3,79 +3,60 @@ import styled from "styled-components";
 const container = styled.div`
     padding:30px;
     font-family: 'Comfortaa', cursive;
-    .chart{
-        box-shadow:1px 0px 5px 0px;
-        padding:40px;
-    }
-    .brown-color{
-      background-color:white;
-      color:#874F34;
-    }
-    .box-with-shadow{
-        box-shadow:1px 1px 5px 1px;
-        padding:5px;
-    }
-    .grey-color{
-        background-color:white;
-        color:black;
-    }
-    .meteric{
-        font-size:250%;
-        margin:0px;
-        text-align:right;
-    }
-    .content{
+    .frame{
+        margin-bottom:20px;
+        padding:25px;
         text-align:left;
+        text-align:justify;
     }
-    .description{
-        font-size:125%;
-        padding:0px;
-        margin:0px;
-        text-align:left;
+    .box-head{
+        font-weight:500;
+        font-size:150%;
+        padding:10px;
     }
-    .display-4{
-        font-size:250%;
+    .table-div{
+        padding:30px;
     }
-    .body-stats-desc{
-        font-size:50%;
+    .quotes{
+        padding:10px;
     }
-    .prop{
-        font-weight:600;
-        font-size:100%;
+    .piechart{
+        width:80%;
+        height:80%;
+        align-self:center;
     }
-    .value{
-        font-weight:600;
-        font-size:250%;
-    }
-    .calorie-img{
-        height:50px;
-        width:50px;
-    }
-    .image-container{
-        margin:0px;
-        padding:0px;
-    }
-    .desc-line{
-        display:block !important;
-    }
-    .content{
-        padding:0 25px 25px 25px;
-    }
-    .body-stats{
-        padding-top:25px;
-        text-align:left;
-    }
-    .box-container{
-        box-shadow:2px 1px 5px 0px;
+    .custom-pad-div{
         padding:20px;
-        margin:20px 0px 20px 0px;
-        min-height:32vh;
+        text-align:center;
+       
     }
-    .box-lg{
-        min-height:66vh;
+    .metric{
+        padding:10px;
+        border-right:1px solid lightgrey;
+        .value{
+            font-size:320%;
+            font-weight:600;
+            text-decoration:underline;
+        }
+        .unit{
+            font-size:100%;
+            font-weight:600;
+        }
     }
-    .operations{
-        text-align:left;
+    .bmi-indicator{
+        height:100%;
+        width:100%;
+    }
+    .metric-sm{
+        padding:10px;
+        .value{
+            font-size:150%;
+            font-weight:600;
+        }
+        .unit{
+            font-size:100%;
+            font-weight:600;
+        }
     }
 `
 const CalorieMeterLabel = styled.div`
