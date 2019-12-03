@@ -23,7 +23,7 @@ const dietaryPlanReducer = (state = intialState, action) => {
             })
 
         case actionTypes.ERROR_DIETARY_PLAN:
-                console.log("state ERROR");
+                console.log("state ERROR " , action.payload);
             return updatedObject(state, {
                 error_dietary_plan: action.payload,
             })

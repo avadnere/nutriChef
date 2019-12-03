@@ -9,21 +9,25 @@ export const getNutritionAndCalorieFacts = () => {
         const uid = state.firebase.auth.uid;
         const height = state.firebase.profile.height;
         const weight = state.firebase.profile.weight;
-        const calculatedBMI = (weight/Math.pow((height/100),2)).toFixed(2);
-        console.log("CALACULATED BMI ",calculatedBMI)
-        const bmi = 32;
+        let calculatedBMI = Math.floor(weight/Math.pow((height/100),2));
+       
         let nutritionFact = null;
         let dailyCalorieIntake = 0;
         let weekelyCalorieIntake=0;
         let weekely_meal_plan = null;
+        let  bmi = calculatedBMI||26;
+    
         firestore.collection('dietaryPlan').where("bmi_start_index", "<=", bmi).get().then((snapshot) => {
-            const doc = snapshot.docs.map((doc) => {
+           
+            const doc = snapshot.docs.filter((doc) => {
                 let data = doc.data();
-                if (bmi <= data.bmi_end_index)
-                    return doc;
+         
+                if (bmi <= data.bmi_end_index){
+                      return doc;
+                }
+               
             })
             const data = doc[0].data();
-            console.log(data);
             nutritionFact = data.recommended_nutrition_intake;
             dailyCalorieIntake = data.daily_calorie_intake;
             weekely_meal_plan = data.weekely_meal_plan;
