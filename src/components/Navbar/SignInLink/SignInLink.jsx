@@ -28,11 +28,11 @@ class SignInLink extends Component {
           <Styled.navlink className="nav-link" onClick={this.props.authModalToggle} >Sign in or Join</Styled.navlink>
           <Authentication show={this.props.authModalShow} onHide={this.props.authModalToggle} />
         </li>
-        <li className="nav-item">
+        {/* <li className="nav-item">
           <Link to="/">
             <Styled.navlink className="nav-link" >Help</Styled.navlink>
           </Link>
-        </li>
+        </li> */}
       </ul>
     );
   }

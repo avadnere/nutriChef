@@ -34,6 +34,9 @@ class Authentication extends Component {
                 <SignIn />
               </Tab>
               <Tab eventKey="signUp" title="New Account">
+              <Styled.authError>
+                    {authError?<p>{authError}</p>:null}
+                </Styled.authError>
                 <SignUp />
               </Tab>
             </Tabs>

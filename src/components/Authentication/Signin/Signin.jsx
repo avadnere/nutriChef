@@ -28,6 +28,7 @@ class Signin extends Component {
     }
     return (
       <Styled.SigninForm className="jumbotron">
+        
         <Form onSubmit={this.handleSubmit}>
           <Form.Group >
             <Form.Control id="email" type="email" placeholder="Enter email" onChange={this.handleChange} />

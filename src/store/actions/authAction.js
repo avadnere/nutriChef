@@ -66,7 +66,13 @@ export const signUp = (newUser) => {
         firebase.auth().createUserWithEmailAndPassword(
             newUser.email,
             newUser.password
-        ).then((response) => {
+        ).catch((error)=>{
+            dispatch({
+                type: actionTypes.SIGNUP_ERROR,
+                error
+            })
+            throw error;
+        }).then((response) => {
             return firestore.collection('users').doc(response.user.uid).set({
                 firstName: newUser.firstName,
                 lastName: newUser.lastName,

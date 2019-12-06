@@ -22,11 +22,17 @@ const authReducer = (state = intialState, action) => {
             return updatedObject(state, {
                 authError: null,
             })
+
+        case actionTypes.SIGNUP_SUCCESS:
+            return updatedObject(state, {
+                authError: null
+            })
         
         case actionTypes.SIGNOUT_SUCCESS:
             return updatedObject(state)
 
         case actionTypes.SIGNUP_ERROR:
+            console.log(action.error.message)
             return updatedObject(state,{
                 authError:action.error.message
             })

@@ -34,11 +34,11 @@ class NavBar extends Component {
                     <Styled.navlink className="nav-link" >Home</Styled.navlink>
                   </Link>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <Link to="/">
                     <Styled.navlink className="nav-link">Articles</Styled.navlink>
                   </Link>
-                </li>
+                </li> */}
               </ul>
             </div>
             <div className="mx-auto order-0">
